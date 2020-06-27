@@ -7,6 +7,9 @@ const PORT = 5000;
 
 const app = express();
 
+// variable set for connection to mLab MongoDB addon
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://bambo:db0044@ds147070.mlab.com:47070/heroku_c5hz9lvs";
+
 app.use(logger("dev"));
 
 app.use(compression());
@@ -15,7 +18,14 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", { useNewUrlParser: true });
+// needed for connection to mLab MongoDB add-on 
+mongoose.connect(MONGODB_URI);
+
+// local connection
+mongoose.connect("mongodb://localhost/budget", {
+  useNewUrlParser: true,
+  useFindAndModify: false
+});
 
 // routes
 app.use(require("./routes/api.js"));
