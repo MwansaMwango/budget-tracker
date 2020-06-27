@@ -136,7 +136,7 @@ function sendTransaction(isAdding) {
     }
   })
   .catch(err => {
-    // fetch failed, so save in indexed db // TODO Save in cache instead?
+    // fetch failed, so save in indexed db 
     console.log("Fetch failed so saveRecord in indexedDB");
     saveRecord(transaction);
 
