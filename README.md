@@ -14,6 +14,9 @@ When brought back online:
 
   * Offline entries should be added to tracker.
 
+## Deployment
+https://thawing-oasis-79510.herokuapp.com/
+
 ## User Story
 AS AN avid traveller
 I WANT to be able to track my withdrawals and deposits with or without a data/internet connection
