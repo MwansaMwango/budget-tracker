@@ -1,3 +1,4 @@
+
 let transactions = [];
 let myChart;
 
@@ -135,7 +136,8 @@ function sendTransaction(isAdding) {
     }
   })
   .catch(err => {
-    // fetch failed, so save in indexed db
+    // fetch failed, so save in indexed db // TODO Save in cache instead?
+    console.log("Fetch failed so saveRecord in indexedDB");
     saveRecord(transaction);
 
     // clear form
