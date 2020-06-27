@@ -8,7 +8,7 @@ const PORT = 5000;
 const app = express();
 
 // variable set for connection to mLab MongoDB addon
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://bambo:db0044@ds147070.mlab.com:47070/heroku_c5hz9lvs";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_c5hz9lvs:5njoktcqp62hrnfqq5o27mgt87@ds147070.mlab.com:47070/heroku_c5hz9lvs";
 
 app.use(logger("dev"));
 
