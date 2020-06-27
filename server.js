@@ -2,13 +2,14 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
+const { init } = require("./models/transaction.js");
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/budget";
+//Connect to the Mongo DB
+mongoose.connect(MONGODB_URI);
 
-const PORT = 5000;
+const PORT = process.env.PORT || 4000;
 
 const app = express();
-
-// variable set for connection to mLab MongoDB addon
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://heroku_c5hz9lvs:5njoktcqp62hrnfqq5o27mgt87@ds147070.mlab.com:47070/heroku_c5hz9lvs";
 
 app.use(logger("dev"));
 
@@ -18,10 +19,6 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-// needed for connection to mLab MongoDB add-on 
-mongoose.connect(MONGODB_URI);
-
-// local connection
 mongoose.connect("mongodb://localhost/budget", {
   useNewUrlParser: true,
   useFindAndModify: false
@@ -31,5 +28,5 @@ mongoose.connect("mongodb://localhost/budget", {
 app.use(require("./routes/api.js"));
 
 app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}! -- http://localhost:${PORT}/`);
+  console.log(`App running on port ${PORT}!`);
 });
